@@ -14,7 +14,7 @@ namespace todos {
 
 class TodoList {
 public:
-  std::vector<TodoItem> GetTodoItems();
+  [[nodiscard]] std::vector<TodoItem> GetTodoItems() const;
 
   void AddNewTodoItem(std::string todo_text);
 

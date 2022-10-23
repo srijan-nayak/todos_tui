@@ -6,7 +6,7 @@
 
 namespace todos {
 
-std::vector<TodoItem> TodoList::GetTodoItems() { return {}; }
+std::vector<TodoItem> TodoList::GetTodoItems() const { return _todo_items; }
 
 void TodoList::AddNewTodoItem(std::string todo_text) {}
 
