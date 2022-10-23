@@ -6,9 +6,10 @@
 
 #include "TodoItem.h"
 
+#include <algorithm>
 #include <string>
-#include <vector>
 #include <utility>
+#include <vector>
 
 namespace todos {
 
@@ -19,7 +20,13 @@ void TodoList::AddNewTodoItem(std::string todo_text) {
   _todo_items.emplace_back(new_todo_item);
 }
 
-void TodoList::RemoveTodoItem(int id) {}
+void TodoList::RemoveTodoItem(int id) {
+  _todo_items.erase(std::remove_if(_todo_items.begin(), _todo_items.end(),
+                                   [&id](const TodoItem &todo_item) {
+                                     return todo_item.GetId() == id;
+                                   }),
+                    _todo_items.end());
+}
 
 void TodoList::ToggleTodoItemIsComplete(int id) {}
 
