@@ -13,6 +13,8 @@
 
 namespace todos {
 
+int TodoList::_todo_item_id_counter = 0;
+
 std::vector<TodoItem> TodoList::GetTodoItems() const { return _todo_items; }
 
 void TodoList::AddNewTodoItem(std::string todo_text) {
