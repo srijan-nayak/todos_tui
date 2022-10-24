@@ -28,6 +28,9 @@ void TodoList::RemoveTodoItem(int id) {
                                      return todo_item.GetId() == id;
                                    }),
                     _todo_items.end());
+
+  if (_todo_items.empty())
+    _todo_item_id_counter = 0;
 }
 
 void TodoList::ToggleTodoItemIsCompleted(int id) {
