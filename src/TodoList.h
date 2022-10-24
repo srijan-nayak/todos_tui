@@ -20,7 +20,7 @@ public:
 
   void RemoveTodoItem(int id);
 
-  void ToggleTodoItemIsComplete(int id);
+  void ToggleTodoItemIsCompleted(int id);
 
 private:
   std::vector<TodoItem> _todo_items;

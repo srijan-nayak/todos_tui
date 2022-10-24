@@ -30,6 +30,13 @@ void TodoList::RemoveTodoItem(int id) {
                     _todo_items.end());
 }
 
-void TodoList::ToggleTodoItemIsComplete(int id) {}
+void TodoList::ToggleTodoItemIsCompleted(int id) {
+  auto found_todo_item = std::find_if(
+      _todo_items.begin(), _todo_items.end(),
+      [&id](const TodoItem &todo_item) { return todo_item.GetId() == id; });
+
+  if (found_todo_item != _todo_items.end())
+    found_todo_item->SetCompleted(!found_todo_item->IsCompleted());
+}
 
 } // namespace todos
