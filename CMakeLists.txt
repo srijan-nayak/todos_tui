@@ -17,7 +17,7 @@ project(todos_tui)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(todos_tui src/main.cpp src/TodoItem.cpp src/TodoItem.h src/TodoList.cpp src/TodoList.h)
+add_executable(todos_tui src/main.cpp src/TodoItem.cpp src/TodoItem.h src/TodoList.cpp src/TodoList.h src/TodoListFileManager.cpp src/TodoListFileManager.h)
 target_include_directories(todos_tui PRIVATE src)
 
 target_link_libraries(todos_tui
