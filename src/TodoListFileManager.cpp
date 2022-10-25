@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -17,7 +18,26 @@ std::filesystem::path TodoListFileManager::_data_directory =
 std::filesystem::path TodoListFileManager::_file =
     _data_directory / "todos.txt";
 
-std::vector<TodoItem> TodoListFileManager::ReadTodoItems() { return {}; }
+std::vector<TodoItem> TodoListFileManager::ReadTodoItems() {
+  std::ifstream todo_file_stream{_file};
+
+  if (!todo_file_stream.is_open())
+    return {};
+
+  std::vector<TodoItem> todo_items;
+  std::string line;
+  int id;
+  std::string todo_text;
+  bool completed;
+
+  while (std::getline(todo_file_stream, line)) {
+    std::istringstream line_stream{line};
+    line_stream >> id >> todo_text >> completed;
+    std::replace(todo_text.begin(), todo_text.end(), '_', ' ');
+    todo_items.emplace_back(TodoItem{id, todo_text, completed});
+  }
+  return todo_items;
+}
 
 void TodoListFileManager::WriteTodoItems(
     const std::vector<TodoItem> &todo_items) {
