@@ -15,7 +15,7 @@ namespace todos {
 class TodoListFileManager {
 public:
   static std::vector<TodoItem> ReadTodoItems();
-  static void WriteTodoItems(std::vector<TodoItem> todo_items);
+  static void WriteTodoItems(const std::vector<TodoItem> &todo_items);
 
 private:
   static std::filesystem::path _data_directory;
