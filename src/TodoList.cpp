@@ -15,6 +15,15 @@ namespace todos {
 
 int TodoList::_todo_item_id_counter = 0;
 
+TodoList::TodoList(std::vector<TodoItem> todo_items)
+    : _todo_items(std::move(todo_items)) {
+  for (const auto &todo_item : _todo_items) {
+    int todo_item_id = todo_item.GetId();
+    if (todo_item_id > _todo_item_id_counter)
+      _todo_item_id_counter = todo_item_id;
+  }
+}
+
 std::vector<TodoItem> TodoList::GetTodoItems() const { return _todo_items; }
 
 void TodoList::AddNewTodoItem(std::string todo_text) {

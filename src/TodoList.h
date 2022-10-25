@@ -14,12 +14,11 @@ namespace todos {
 
 class TodoList {
 public:
+  explicit TodoList(std::vector<TodoItem> todo_items);
+
   [[nodiscard]] std::vector<TodoItem> GetTodoItems() const;
-
   void AddNewTodoItem(std::string todo_text);
-
   void RemoveTodoItem(int id);
-
   void ToggleTodoItemIsCompleted(int id);
 
 private:
