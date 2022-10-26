@@ -13,10 +13,8 @@
 
 namespace todos {
 
-std::filesystem::path TodoListFileManager::data_directory_ =
-    std::filesystem::current_path() / "data";
-std::filesystem::path TodoListFileManager::file_ =
-    data_directory_ / "todos.txt";
+std::filesystem::path TodoListFileManager::data_directory_ = std::filesystem::current_path() / "data";
+std::filesystem::path TodoListFileManager::file_ = data_directory_ / "todos.txt";
 
 std::vector<TodoItem> TodoListFileManager::ReadTodoItems() {
   std::ifstream todo_file_stream{file_};
@@ -39,8 +37,7 @@ std::vector<TodoItem> TodoListFileManager::ReadTodoItems() {
   return todo_items;
 }
 
-void TodoListFileManager::WriteTodoItems(
-    const std::vector<TodoItem> &todo_items) {
+void TodoListFileManager::WriteTodoItems(const std::vector<TodoItem> &todo_items) {
   if (!std::filesystem::exists(data_directory_))
     std::filesystem::create_directory(data_directory_);
 

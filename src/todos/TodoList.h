@@ -13,7 +13,7 @@
 namespace todos {
 
 class TodoList {
-public:
+ public:
   explicit TodoList(std::vector<TodoItem> todo_items);
 
   [[nodiscard]] std::vector<TodoItem> GetTodoItems() const;
@@ -21,7 +21,7 @@ public:
   void RemoveTodoItem(int id);
   void ToggleTodoItemIsCompleted(int id);
 
-private:
+ private:
   std::vector<TodoItem> todo_items_;
   static int todo_item_id_counter_;
 };

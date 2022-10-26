@@ -10,7 +10,7 @@
 namespace todos {
 
 class TodoItem {
-public:
+ public:
   TodoItem(int id, std::string todo_text, bool completed);
 
   [[nodiscard]] int GetId() const;
@@ -19,7 +19,7 @@ public:
 
   void SetCompleted(bool completed);
 
-private:
+ private:
   int id_;
   std::string todo_text_;
   bool completed_;
