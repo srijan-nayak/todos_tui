@@ -22,6 +22,7 @@ class TodosTui {
   std::string new_todo_text_;
 
   ftxui::Component NewTodoForm();
+  ftxui::Component TodoList();
 };
 
 } // namespace tui
