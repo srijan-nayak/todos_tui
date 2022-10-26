@@ -7,6 +7,8 @@
 
 #include "../todos/TodoList.h"
 
+#include <ftxui/component/component.hpp>
+
 namespace tui {
 
 class TodosTui {
@@ -16,7 +18,10 @@ class TodosTui {
   void StartLoop();
 
  private:
-  todos::TodoList &_todo_list;
+  todos::TodoList &todo_list_;
+  std::string new_todo_text_;
+
+  ftxui::Component NewTodoForm();
 };
 
 } // namespace tui
