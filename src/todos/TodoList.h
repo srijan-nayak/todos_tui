@@ -22,8 +22,8 @@ public:
   void ToggleTodoItemIsCompleted(int id);
 
 private:
-  std::vector<TodoItem> _todo_items;
-  static int _todo_item_id_counter;
+  std::vector<TodoItem> todo_items_;
+  static int todo_item_id_counter_;
 };
 
 } // namespace todos

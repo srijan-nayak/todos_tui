@@ -13,13 +13,13 @@
 
 namespace todos {
 
-std::filesystem::path TodoListFileManager::_data_directory =
+std::filesystem::path TodoListFileManager::data_directory_ =
     std::filesystem::current_path() / "data";
-std::filesystem::path TodoListFileManager::_file =
-    _data_directory / "todos.txt";
+std::filesystem::path TodoListFileManager::file_ =
+    data_directory_ / "todos.txt";
 
 std::vector<TodoItem> TodoListFileManager::ReadTodoItems() {
-  std::ifstream todo_file_stream{_file};
+  std::ifstream todo_file_stream{file_};
 
   if (!todo_file_stream.is_open())
     return {};
@@ -41,10 +41,10 @@ std::vector<TodoItem> TodoListFileManager::ReadTodoItems() {
 
 void TodoListFileManager::WriteTodoItems(
     const std::vector<TodoItem> &todo_items) {
-  if (!std::filesystem::exists(_data_directory))
-    std::filesystem::create_directory(_data_directory);
+  if (!std::filesystem::exists(data_directory_))
+    std::filesystem::create_directory(data_directory_);
 
-  std::ofstream todo_file_stream{_file};
+  std::ofstream todo_file_stream{file_};
   for (const auto &todo_item : todo_items) {
     std::string todo_text = todo_item.GetTodoText();
     std::replace(todo_text.begin(), todo_text.end(), ' ', '_');

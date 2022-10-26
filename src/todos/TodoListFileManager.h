@@ -18,8 +18,8 @@ public:
   static void WriteTodoItems(const std::vector<TodoItem> &todo_items);
 
 private:
-  static std::filesystem::path _data_directory;
-  static std::filesystem::path _file;
+  static std::filesystem::path data_directory_;
+  static std::filesystem::path file_;
 };
 
 } // namespace todos

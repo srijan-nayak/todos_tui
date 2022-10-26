@@ -20,9 +20,9 @@ public:
   void SetCompleted(bool completed);
 
 private:
-  int _id;
-  std::string _todo_text;
-  bool _completed;
+  int id_;
+  std::string todo_text_;
+  bool completed_;
 };
 
 } // namespace todos

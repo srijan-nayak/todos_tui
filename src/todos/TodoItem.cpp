@@ -9,12 +9,12 @@
 namespace todos {
 
 TodoItem::TodoItem(int id, std::string todo_text, bool completed)
-    : _id(id), _todo_text(std::move(todo_text)), _completed(completed) {}
+    : id_(id), todo_text_(std::move(todo_text)), completed_(completed) {}
 
-int TodoItem::GetId() const { return _id; }
-const std::string &TodoItem::GetTodoText() const { return _todo_text; }
-bool TodoItem::IsCompleted() const { return _completed; }
+int TodoItem::GetId() const { return id_; }
+const std::string &TodoItem::GetTodoText() const { return todo_text_; }
+bool TodoItem::IsCompleted() const { return completed_; }
 
-void TodoItem::SetCompleted(bool completed) { _completed = completed; }
+void TodoItem::SetCompleted(bool completed) { completed_ = completed; }
 
 } // namespace todos

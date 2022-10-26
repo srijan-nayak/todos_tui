@@ -13,41 +13,41 @@
 
 namespace todos {
 
-int TodoList::_todo_item_id_counter = 0;
+int TodoList::todo_item_id_counter_ = 0;
 
 TodoList::TodoList(std::vector<TodoItem> todo_items)
-    : _todo_items(std::move(todo_items)) {
-  for (const auto &todo_item : _todo_items) {
+    : todo_items_(std::move(todo_items)) {
+  for (const auto &todo_item : todo_items_) {
     int todo_item_id = todo_item.GetId();
-    if (todo_item_id > _todo_item_id_counter)
-      _todo_item_id_counter = todo_item_id;
+    if (todo_item_id > todo_item_id_counter_)
+      todo_item_id_counter_ = todo_item_id;
   }
 }
 
-std::vector<TodoItem> TodoList::GetTodoItems() const { return _todo_items; }
+std::vector<TodoItem> TodoList::GetTodoItems() const { return todo_items_; }
 
 void TodoList::AddNewTodoItem(std::string todo_text) {
-  TodoItem new_todo_item{++_todo_item_id_counter, std::move(todo_text), false};
-  _todo_items.emplace_back(new_todo_item);
+  TodoItem new_todo_item{++todo_item_id_counter_, std::move(todo_text), false};
+  todo_items_.emplace_back(new_todo_item);
 }
 
 void TodoList::RemoveTodoItem(int id) {
-  _todo_items.erase(std::remove_if(_todo_items.begin(), _todo_items.end(),
+  todo_items_.erase(std::remove_if(todo_items_.begin(), todo_items_.end(),
                                    [&id](const TodoItem &todo_item) {
                                      return todo_item.GetId() == id;
                                    }),
-                    _todo_items.end());
+                    todo_items_.end());
 
-  if (_todo_items.empty())
-    _todo_item_id_counter = 0;
+  if (todo_items_.empty())
+    todo_item_id_counter_ = 0;
 }
 
 void TodoList::ToggleTodoItemIsCompleted(int id) {
   auto found_todo_item = std::find_if(
-      _todo_items.begin(), _todo_items.end(),
+      todo_items_.begin(), todo_items_.end(),
       [&id](const TodoItem &todo_item) { return todo_item.GetId() == id; });
 
-  if (found_todo_item != _todo_items.end())
+  if (found_todo_item != todo_items_.end())
     found_todo_item->SetCompleted(!found_todo_item->IsCompleted());
 }
 
