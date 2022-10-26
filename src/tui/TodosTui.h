@@ -19,6 +19,6 @@ class TodosTui {
   todos::TodoList &_todo_list;
 };
 
-} // tui
+} // namespace tui
 
 #endif //TODOS_TUI_SRC_TUI_TODOSTUI_H_
