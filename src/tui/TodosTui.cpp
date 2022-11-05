@@ -72,12 +72,15 @@ ftxui::Component TodosTui::TodoItemComponent(const todos::TodoItem &todo_item) {
   auto completed_button = ftxui::Button(todo_item.IsCompleted() ? " ✓ " : "   ", [=] {
     todo_list_.ToggleTodoItemIsCompleted(todo_item.GetId());
     ReloadTodoListComponent();
-  });
+  }) | ftxui::color(todo_item.IsCompleted() ? ftxui::Color::Green : ftxui::Color::Blue);
+
   auto delete_button = ftxui::Button("Delete", [=] {
     todo_list_.RemoveTodoItem(todo_item.GetId());
     ReloadTodoListComponent();
   }) | ftxui::color(ftxui::Color::Red);
+
   auto buttons = ftxui::Container::Horizontal({completed_button, delete_button});
+
   return ftxui::Renderer(buttons, [=] {
     return ftxui::hbox(
       {
