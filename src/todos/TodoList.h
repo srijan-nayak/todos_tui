@@ -23,7 +23,7 @@ class TodoList {
 
  private:
   std::vector<TodoItem> todo_items_;
-  static int todo_item_id_counter_;
+  int todo_item_id_counter_ = 0;
 };
 
 } // namespace todos
