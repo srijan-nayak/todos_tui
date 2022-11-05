@@ -13,8 +13,6 @@
 
 namespace todos {
 
-int TodoList::todo_item_id_counter_ = 0;
-
 TodoList::TodoList(std::vector<TodoItem> todo_items)
   : todo_items_(std::move(todo_items)) {
   for (const auto &todo_item : todo_items_) {
